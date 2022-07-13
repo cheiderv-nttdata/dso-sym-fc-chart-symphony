@@ -1,0 +1,75 @@
+{{- /*
+Copyright (c) 2004-present Facebook All rights reserved.
+Use of this source code is governed by a BSD-style
+license that can be found in the LICENSE file.
+*/ -}}
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "symphony.apollo.fullname" . }}
+  labels: {{- include "symphony.apollo.metaLabels" . | nindent 4 }}
+  {{- with .Values.apollo.deploymentAnnotations }}
+  annotations: {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  {{- with .Values.apollo.updateStrategy }}
+  strategy: {{- toYaml . | nindent 4 }}
+  {{- end }}
+  replicas: {{ .Values.apollo.replicas }}
+  selector:
+    matchLabels: {{- include "symphony.apollo.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels: {{- include "symphony.apollo.podLabels" . | nindent 8 }}
+      {{- with .Values.apollo.podAnnotations }}
+      annotations: {{- toYaml . | nindent 8 }}
+      {{- end }}
+    spec:
+      serviceAccountName: {{ template "symphony.apollo.serviceAccountName" . }}
+      {{- with .Values.apollo.securityContext }}
+      securityContext: {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.apollo.nodeSelector }}
+      nodeSelector: {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.apollo.tolerations }}
+      tolerations: {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.apollo.affinity }}
+      affinity: {{- toYaml . | nindent 8 }}
+      {{- end }}
+      containers:
+        - name: apollo
+          image: {{ default (print .Values.global.image.registry "/apollo") .Values.apollo.image.repository }}:{{ default .Values.global.image.tag .Values.apollo.image.tag }}
+          imagePullPolicy: {{ default .Values.global.image.pullPolicy .Values.apollo.image.pullPolicy }}
+          env:
+            {{- with .Values.apollo.spec.proxy.logger }}
+            - name: LOGGER_HOST
+              value: {{ . | quote }}
+            {{- end }}
+            {{- with .Values.apollo.spec.extraEnvVars }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
+            {{- /*
+            This block should include `symphony.tracingEnv`, but the node jaeger client only supports
+            Thrift when working with the agent.  This is a temporary hack until the node client supports
+            grpc, at which point we can delete `agentThriftClient`.
+            */ -}}
+            {{- if and .Values.tracing.enabled .Values.tracing.jaeger.agentThriftEndpoint }}
+            - name: TELEMETRY_TRACE_SAMPLING_PROBABILITY
+              value: {{ int .Values.tracing.enabled | quote }}
+            - name: TELEMETRY_TRACE_EXPORTER
+              value: "jaeger"
+            {{- with .Values.tracing.jaeger.agentThriftEndpoint }}
+            - name: JAEGER_AGENT_ENDPOINT
+              value: {{ . | quote }}
+            {{- end }}
+            {{- end }}
+          ports:
+            {{- include "symphony.containerPorts" .Values.apollo | nindent 12 }}
+            - containerPort: {{ .Values.apollo.service.internal.targetPort }}
+              name: http-internal
+          {{- $ = set .Values.apollo.probes "path" "/.well-known/apollo/server-health" -}}
+          {{- include "symphony.probes" .Values.apollo | indent 10}}
+          resources: {{- toYaml .Values.apollo.resources | nindent 12 }}

@@ -1,0 +1,525 @@
+USER-SUPPLIED VALUES:
+COMPUTED VALUES: null
+USER-SUPPLIED VALUES: null
+# Ingress configuration
+ingress:
+  enabled: false
+  annotations: {}
+  labels: {}
+  # Hosts to use for ingress rules
+  hosts: []
+  # - symphony.domain.com
+  # Paths to use for ingress rules
+  paths: []
+  # - /
+  # Extra paths to prepend to every host
+  extraPaths: []
+  # - path: /*
+  #   backend:
+  #     serviceName: ssl-redirect
+  #     servicePort: use-annotation
+  # TLS configuration for symphony ingress
+  # Secret must be manually created in the namespace
+  tls: []
+  # - secretName: symphony-general-tls
+#   hosts:
+#   - symphony.domain.com
+admin:
+  affinity: {}
+  deploymentAnnotations: {}
+  image:
+    pullPolicy: IfNotPresent
+    registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
+    repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
+    tag: admin-v1.0.0
+  networkPolicy:
+    allowExternal: false
+    enabled: true
+    ingressNSMatchLabels: {}
+    ingressNSPodMatchLabels: {}
+  nodeSelector: {}
+  podAnnotations: {}
+  podDisruptionBudget:
+    enabled: true
+    maxUnavailable: ""
+    minAvailable: 1
+  probes:
+    liveness:
+      failureThreshold: 5
+      initialDelaySeconds: 10
+      periodSeconds: 30
+      successThreshold: 1
+      timeoutSeconds: 3
+    readiness:
+      failureThreshold: 3
+      initialDelaySeconds: 5
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 1
+  replicas: 1
+  resources: {}
+  securityContext:
+    fsGroup: 65534
+    runAsGroup: 65534
+    runAsNonRoot: true
+    runAsUser: 65534
+  service:
+    metrics:
+      port: 9464
+      targetPort: 9464
+    port: 80
+    profile:
+      port: 6060
+    targetPort: 8080
+  serviceAccount:
+    annotations: {}
+    create: true
+    name: symphony-admin
+  spec:
+    log:
+      format: json
+      level: debug
+  tolerations: []
+  updateStrategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+apollo:
+  autoscaling:
+    enabled: false
+    maxReplicas: 1
+    metrics: []
+    minReplicas: 1
+  image:
+    pullPolicy: IfNotPresent
+    registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
+    repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
+    tag: apollo-v1.0.1
+  nodeSelector: {}
+  podDisruptionBudget:
+    enabled: true
+  probes:
+    liveness:
+      failureThreshold: 5
+      initialDelaySeconds: 30
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 5
+    path: /.well-known/apollo/server-health
+    readiness:
+      failureThreshold: 5
+      initialDelaySeconds: 10
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 3
+  replicas: 1
+  service:
+    internal:
+      port: 4000
+      targetPort: 80
+    metrics:
+      port: 9464
+      targetPort: 9464
+    port: 4000
+    targetPort: 80
+  serviceAccount:
+    annotations: {}
+    create: true
+    name: symphony-apollo
+  spec:
+    log:
+      level: info
+    proxy:
+      logger: log-forwarder-aggregator.symphony.svc.cluster.local:9880
+async:
+  affinity: {}
+  deploymentAnnotations: {}
+  image:
+    pullPolicy: IfNotPresent
+    registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
+    repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
+    tag: async-v1.0.0
+  nodeSelector: {}
+  podAnnotations: {}
+  podDisruptionBudget:
+    enabled: true
+    maxUnavailable: ""
+    minAvailable: 1
+  probes:
+    liveness:
+      failureThreshold: 5
+      initialDelaySeconds: 10
+      periodSeconds: 30
+      successThreshold: 1
+      timeoutSeconds: 3
+    readiness:
+      failureThreshold: 3
+      initialDelaySeconds: 5
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 1
+  replicas: 1
+  resources: {}
+  securityContext:
+    fsGroup: 65534
+    runAsGroup: 65534
+    runAsNonRoot: true
+    runAsUser: 65534
+  service:
+    metrics:
+      port: 9464
+      targetPort: 9464
+    port: 80
+    profile:
+      port: 6060
+    targetPort: 8080
+  serviceAccount:
+    annotations: {}
+    create: true
+    name: symphony-async
+  spec:
+    cadence:
+      address: cadence-frontend.cadence.svc.cluster.local:7933
+    event:
+      pub_url: nats://graph.event
+      sub_url: nats://graph.event?queue=async
+    export:
+      bucket_prefix: exports/
+      bucket_url: s3://symphony-nttdata?region=us-east-2
+    extraEnvVars:
+      - name: NATS_SERVER_URL
+        value: nats://nats.nats.svc.cluster.local
+    log:
+      format: json
+      level: debug
+    tenancy:
+      tenantMaxDBConn: 5
+  tolerations: []
+  updateStrategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+docs:
+  affinity: {}
+  deploymentAnnotations: {}
+  image:
+    pullPolicy: IfNotPresent
+    registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
+    repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
+    tag: docs-v1.0.0
+  nodeSelector: {}
+  podAnnotations: {}
+  probes:
+    liveness:
+      failureThreshold: 5
+      initialDelaySeconds: 10
+      periodSeconds: 30
+      successThreshold: 1
+      timeoutSeconds: 3
+    readiness:
+      failureThreshold: 3
+      initialDelaySeconds: 5
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 1
+  replicas: 1
+  resources:
+    limits:
+      cpu: 50m
+      memory: 64Mi
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 1001
+  service:
+    metrics:
+      port: 9464
+      targetPort: 9464
+    port: 80
+    targetPort: 8080
+  serviceAccount:
+    annotations: {}
+    create: true
+    name: symphony-docs
+  tolerations: []
+  updateStrategy:
+    type: RollingUpdate
+front:
+  affinity: {}
+  autoscaling:
+    enabled: false
+    maxReplicas: 3
+    metrics: []
+    minReplicas: 1
+  deploymentAnnotations: {}
+  image:
+    pullPolicy: IfNotPresent
+    registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
+    repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
+    tag: front-v1.0.0
+  nodeSelector: {}
+  podAnnotations: {}
+  podDisruptionBudget:
+    enabled: true
+    maxUnavailable: ""
+    minAvailable: 1
+  probes:
+    liveness:
+      failureThreshold: 5
+      initialDelaySeconds: 30
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 5
+    path: /healthz
+    readiness:
+      failureThreshold: 5
+      initialDelaySeconds: 10
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 3
+  replicas: 2
+  resources: {}
+  securityContext:
+    fsGroup: 65534
+    runAsGroup: 65534
+    runAsNonRoot: true
+    runAsUser: 65534
+  service:
+    internal:
+      port: 1030
+      targetPort: 1030
+    metrics:
+      port: 9464
+      targetPort: 9464
+    port: 80
+    targetPort: 8080
+  serviceAccount:
+    annotations: {}
+    create: true
+    name: symphony-front
+  spec:
+    extraEnvVars:
+      - name: FB_TEST_USER
+        value: symphony@nttdata.com
+      - name: RECAPTCHA_KEY
+        value: 6LdmeOEfAAAAAAIGFOyM23yMdwyxOhQZ2fVTMQrD
+      - name: APOLLO_HOST
+        value: symphony-apollo:4000
+    log:
+      level: info
+    mapbox:
+      access_token: pk.eyJ1IjoiZGFyZXN0cmVwb3YiLCJhIjoiY2tqMDc4ODA0MGFubzMwbG51bjU0cHh4diJ9.dS1i0H6AdgMozlUE01QJMA
+    mysql:
+      db: auth
+      host: my-sql-symphony.c6418zenspuo.us-east-2.rds.amazonaws.com
+      pass: YWRtaW4yMDIyCg==
+      port: 3306
+      user: YWRtaW4K
+    proxy:
+      logger: fluentd-aggregator.symphony.svc.cluster.local:9880
+    session_token: fhcfvugnlkkgntihvlekctunhbbdbjiu
+  tolerations: []
+  updateStrategy:
+    type: RollingUpdate
+fullnameOverride: ""
+global:
+  image:
+    pullPolicy: IfNotPresent
+    registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
+    repository: null
+    tag: AUTOMATION300622V2
+  imagePullSecrets: []
+graph:
+  affinity: {}
+  autoscaling:
+    enabled: false
+    maxReplicas: 3
+    metrics: []
+    minReplicas: 1
+  deploymentAnnotations: {}
+  image:
+    pullPolicy: IfNotPresent
+    registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
+    repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
+    tag: graph-v1.0.0
+  nodeSelector: {}
+  podAnnotations: {}
+  podDisruptionBudget:
+    enabled: true
+    maxUnavailable: ""
+    minAvailable: 1
+  probes:
+    liveness:
+      failureThreshold: 5
+      initialDelaySeconds: 10
+      periodSeconds: 30
+      successThreshold: 1
+      timeoutSeconds: 3
+    readiness:
+      failureThreshold: 3
+      initialDelaySeconds: 5
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 1
+  replicas: 4
+  resources: {}
+  securityContext:
+    fsGroup: 65534
+    runAsGroup: 65534
+    runAsNonRoot: true
+    runAsUser: 65534
+  service:
+    metrics:
+      port: 9464
+      targetPort: 9464
+    port: 80
+    profile:
+      port: 6060
+    targetPort: 8080
+  serviceAccount:
+    annotations: {}
+    create: true
+    name: symphony-graph
+  spec:
+    event:
+      url: nats://graph.event
+    extraEnvVars:
+      - name: NATS_SERVER_URL
+        value: nats://nats.nats.svc.cluster.local
+    log:
+      format: json
+      level: debug
+    tenancy:
+      tenantMaxDBConn: 1000
+  tolerations: []
+  updateStrategy:
+    type: RollingUpdate
+jobrunner:
+  image:
+    pullPolicy: IfNotPresent
+    registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
+    repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
+    tag: jobrunner-v1.0.0
+  jobs:
+    - name: gc
+      schedule: 0 * * * *
+    - name: syncservices
+      schedule: 0 * * * *
+  resources:
+    limits:
+      cpu: 10m
+      memory: 64Mi
+  serviceAccount:
+    annotations: {}
+    create: true
+    name: ""
+migrate:
+  image:
+    pullPolicy: IfNotPresent
+    registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
+    repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
+    tag: migrate-v1.0.0
+  securityContext:
+    fsGroup: 65534
+    runAsGroup: 65534
+    runAsNonRoot: true
+    runAsUser: 65534
+  spec:
+    log:
+      format: json
+      level: debug
+    migrations:
+      cadence:
+        address: cadence-frontend.cadence.svc.cluster.local:7933
+        domains: flow,export
+        extraEnvVars:
+          - name: CADENCE_RETENTION
+            value: "3"
+      graph:
+        extraEnvVars: []
+nameOverride: ""
+persistence:
+  database:
+    host: my-sql-symphony.c6418zenspuo.us-east-2.rds.amazonaws.com
+    params:
+      charset: utf8
+      interpolateParams: "true"
+      parseTime: "true"
+      tls: "false"
+    pass: YWRtaW4yMDIyCg==
+    port: 3306
+    scheme: mysql
+    user: YWRtaW4K
+serviceMonitor:
+  additionalLabels: {}
+  alerting:
+    additionalLabels: {}
+    rules: []
+  enabled: false
+  relabellings: []
+store:
+  affinity: {}
+  deploymentAnnotations: {}
+  image:
+    pullPolicy: IfNotPresent
+    registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
+    repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
+    tag: store-v1.0.0
+  nodeSelector: {}
+  podAnnotations: {}
+  podDisruptionBudget:
+    enabled: true
+    maxUnavailable: ""
+    minAvailable: 1
+  probes:
+    liveness:
+      failureThreshold: 5
+      initialDelaySeconds: 10
+      periodSeconds: 30
+      successThreshold: 1
+      timeoutSeconds: 3
+    readiness:
+      failureThreshold: 3
+      initialDelaySeconds: 5
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 1
+  replicas: 1
+  resources: {}
+  securityContext:
+    fsGroup: 65534
+    runAsGroup: 65534
+    runAsNonRoot: true
+    runAsUser: 65534
+  service:
+    metrics:
+      port: 9464
+      targetPort: 9464
+    port: 80
+    profile:
+      port: 6060
+    targetPort: 8080
+  serviceAccount:
+    annotations: {}
+    create: true
+    name: symphony-store
+  spec:
+    bucket:
+      url: s3://symphony-nttdata?region=us-east-2
+    log:
+      format: json
+      level: debug
+  tolerations: []
+  updateStrategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+tracing:
+  enabled: false
+  excludeSpanNames: []
+  jaeger:
+    agentEndpoint: ""
+    agentThriftEndpoint: ""
+    collectorEndpoint: ""

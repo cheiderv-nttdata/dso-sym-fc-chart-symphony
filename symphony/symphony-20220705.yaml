@@ -447,10 +447,10 @@ persistence:
       interpolateParams: "true"
       parseTime: "true"
       tls: "false"
-    pass: YWRtaW4yMDIyCg==
+    pass: admin2022
     port: 3306
     scheme: mysql
-    user: YWRtaW4K
+    user: admin
 serviceMonitor:
   additionalLabels: {}
   alerting:

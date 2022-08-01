@@ -313,9 +313,9 @@ front:
     mysql:
       db: auth
       host: my-sql-symphony.c6418zenspuo.us-east-2.rds.amazonaws.com
-      pass: YWRtaW4yMDIyCg==
+      pass: admin2022
       port: 3306
-      user: YWRtaW4K
+      user: admin
     proxy:
       logger: fluentd-aggregator.symphony.svc.cluster.local:9880
     session_token: fhcfvugnlkkgntihvlekctunhbbdbjiu

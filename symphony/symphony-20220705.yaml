@@ -31,7 +31,7 @@ admin:
     pullPolicy: IfNotPresent
     registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
     repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
-    tag: admin-v1.0.19
+    tag: admin-v1.0.0
   networkPolicy:
     allowExternal: false
     enabled: true
@@ -95,7 +95,7 @@ apollo:
     pullPolicy: IfNotPresent
     registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
     repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
-    tag: apollo-v1.0.3
+    tag: apollo-v1.0.0
   nodeSelector: {}
   podDisruptionBudget:
     enabled: true
@@ -139,7 +139,7 @@ async:
     pullPolicy: IfNotPresent
     registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
     repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
-    tag: async-v1.0.21
+    tag: async-v1.0.0
   nodeSelector: {}
   podAnnotations: {}
   podDisruptionBudget:
@@ -208,7 +208,7 @@ docs:
     pullPolicy: IfNotPresent
     registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
     repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
-    tag: docs-v1.0
+    tag: docs-v1.0.0
   nodeSelector: {}
   podAnnotations: {}
   probes:
@@ -257,7 +257,7 @@ front:
     pullPolicy: IfNotPresent
     registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
     repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
-    tag: front-v1.0.25
+    tag: front-v1.0.0
   nodeSelector: {}
   podAnnotations: {}
   podDisruptionBudget:
@@ -342,7 +342,7 @@ graph:
     pullPolicy: IfNotPresent
     registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
     repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
-    tag: graph-v1.0.23
+    tag: graph-v1.0.0
   nodeSelector: {}
   podAnnotations: {}
   podDisruptionBudget:
@@ -400,7 +400,7 @@ jobrunner:
     pullPolicy: IfNotPresent
     registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
     repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
-    tag: jobrunner-v1.0
+    tag: jobrunner-v1.0.0
   jobs:
     - name: gc
       schedule: 0 * * * *
@@ -419,7 +419,7 @@ migrate:
     pullPolicy: IfNotPresent
     registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
     repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
-    tag: migrate-v1.0.19
+    tag: migrate-v1.0.0
   securityContext:
     fsGroup: 65534
     runAsGroup: 65534
@@ -465,7 +465,7 @@ store:
     pullPolicy: IfNotPresent
     registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
     repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
-    tag: store-v1.0.19
+    tag: store-v1.0.0
   nodeSelector: {}
   podAnnotations: {}
   podDisruptionBudget:

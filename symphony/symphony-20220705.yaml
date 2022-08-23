@@ -31,7 +31,7 @@ admin:
     pullPolicy: IfNotPresent
     registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
     repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
-    tag: admin-v1.0.0
+    tag: admin-v1.0.19
   networkPolicy:
     allowExternal: false
     enabled: true
@@ -139,7 +139,7 @@ async:
     pullPolicy: IfNotPresent
     registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
     repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
-    tag: async-v1.0.0
+    tag: async-v1.0.21
   nodeSelector: {}
   podAnnotations: {}
   podDisruptionBudget:
@@ -208,7 +208,7 @@ docs:
     pullPolicy: IfNotPresent
     registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
     repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
-    tag: docs-v1.0.0
+    tag: docs-v1.0
   nodeSelector: {}
   podAnnotations: {}
   probes:
@@ -257,7 +257,7 @@ front:
     pullPolicy: IfNotPresent
     registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
     repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
-    tag: front-v1.0.0
+    tag: front-v1.0.25
   nodeSelector: {}
   podAnnotations: {}
   podDisruptionBudget:
@@ -342,7 +342,7 @@ graph:
     pullPolicy: IfNotPresent
     registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
     repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
-    tag: graph-v1.0.0
+    tag: graph-v1.0.23
   nodeSelector: {}
   podAnnotations: {}
   podDisruptionBudget:
@@ -400,7 +400,7 @@ jobrunner:
     pullPolicy: IfNotPresent
     registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
     repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
-    tag: jobrunner-v1.0.0
+    tag: jobrunner-v1.0
   jobs:
     - name: gc
       schedule: 0 * * * *
@@ -419,7 +419,7 @@ migrate:
     pullPolicy: IfNotPresent
     registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
     repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
-    tag: migrate-v1.0.0
+    tag: migrate-v1.0.19
   securityContext:
     fsGroup: 65534
     runAsGroup: 65534
@@ -465,7 +465,7 @@ store:
     pullPolicy: IfNotPresent
     registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
     repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
-    tag: store-v1.0.0
+    tag: store-v1.0.19
   nodeSelector: {}
   podAnnotations: {}
   podDisruptionBudget:
@@ -523,3 +523,8 @@ tracing:
     agentEndpoint: ""
     agentThriftEndpoint: ""
     collectorEndpoint: ""
+automation:
+  image:
+    tag: automation-v1.0.15
+    registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
+    repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev

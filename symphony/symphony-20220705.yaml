@@ -95,7 +95,7 @@ apollo:
     pullPolicy: IfNotPresent
     registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
     repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
-    tag: apollo-v1.0.19
+    tag: apollo-v1.0.20
   nodeSelector: {}
   podDisruptionBudget:
     enabled: true
@@ -400,7 +400,7 @@ jobrunner:
     pullPolicy: IfNotPresent
     registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
     repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
-    tag: jobrunner-v1.0
+    tag: jobrunner-v1.2
   jobs:
     - name: gc
       schedule: 0 * * * *

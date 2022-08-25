@@ -39,7 +39,7 @@ admin:
   image:
     pullPolicy: IfNotPresent
     registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
-    repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
+    repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-repo
     tag: admin-v1.0.20
   networkPolicy:
     allowExternal: false
@@ -103,8 +103,8 @@ apollo:
   image:
     pullPolicy: IfNotPresent
     registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
-    repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
-    tag: apollo-v1.0.18
+    repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-repo
+    tag: apollo-v1.0.19
   nodeSelector: {}
   podDisruptionBudget:
     enabled: true
@@ -147,7 +147,7 @@ async:
   image:
     pullPolicy: IfNotPresent
     registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
-    repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
+    repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-repo
     tag: async-v1.0.23
   nodeSelector: {}
   podAnnotations: {}
@@ -308,7 +308,7 @@ docs:
   image:
     pullPolicy: IfNotPresent
     registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
-    repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
+    repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-repo
     tag: docs-v1.0
   nodeSelector: {}
   podAnnotations: {}
@@ -357,7 +357,7 @@ front:
   image:
     pullPolicy: IfNotPresent
     registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
-    repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
+    repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-repo
     tag: front-v1.0.26
   nodeSelector: {}
   podAnnotations: {}
@@ -444,7 +444,7 @@ graph:
   image:
     pullPolicy: IfNotPresent
     registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
-    repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
+    repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-repo
     tag: graph-v1.0.25
   nodeSelector: {}
   podAnnotations: {}
@@ -502,7 +502,7 @@ jobrunner:
   image:
     pullPolicy: null
     registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
-    repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
+    repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-repo
     tag: jobrunner-v1.0
   jobs:
     - name: gc
@@ -521,7 +521,7 @@ migrate:
   image:
     pullPolicy: IfNotPresent
     registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
-    repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
+    repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-repo
     tag: migrate-v1.0.20
   securityContext:
     fsGroup: 65534
@@ -567,7 +567,7 @@ store:
   image:
     pullPolicy: IfNotPresent
     registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
-    repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
+    repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-repo
     tag: store-v1.0.20
   nodeSelector: {}
   podAnnotations: {}

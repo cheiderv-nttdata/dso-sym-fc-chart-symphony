@@ -55,9 +55,15 @@ app.kubernetes.io/component: front
 {{ include "symphony.metaLabels" . }}
 {{- end }}
 
-{{/* Meta labels for front service */}}
+{{/* Meta labels for apollo service */}}
 {{- define "symphony.apollo.metaLabels" -}}
 app.kubernetes.io/component: apollo
+{{ include "symphony.metaLabels" . }}
+{{- end }}
+
+{{/* Meta labels for automation service */}}
+{{- define "symphony.automation.metaLabels" -}}
+app.kubernetes.io/component: automation
 {{ include "symphony.metaLabels" . }}
 {{- end }}
 
@@ -115,6 +121,12 @@ app.kubernetes.io/component: front
 app.kubernetes.io/component: apollo
 {{- end }}
 
+{{/* Selector labels for automation service */}}
+{{- define "symphony.automation.selectorLabels" -}}
+{{ include "symphony.selectorLabels" . }}
+app.kubernetes.io/component: automation
+{{- end }}
+
 {{/* Selector labels for admin service */}}
 {{- define "symphony.admin.selectorLabels" -}}
 {{ include "symphony.selectorLabels" . }}
@@ -148,6 +160,11 @@ app.kubernetes.io/component: docs
 {{/* Fullname suffixed with apollo */}}
 {{- define "symphony.apollo.fullname" -}}
 {{- print (include "symphony.fullname" .) "-apollo" -}}
+{{- end }}
+
+{{/* Fullname suffixed with automation */}}
+{{- define "symphony.automation.fullname" -}}
+{{- print (include "symphony.fullname" .) "-automation" -}}
 {{- end }}
 
 {{/* Fullname suffixed with front */}}
@@ -194,12 +211,21 @@ app.kubernetes.io/component: docs
 {{- end -}}
 {{- end }}
 
-{{/* Create the name of apllo service account to use */}}
+{{/* Create the name of apollo service account to use */}}
 {{- define "symphony.apollo.serviceAccountName" -}}
 {{- if .Values.apollo.serviceAccount.create -}}
 {{ default (include "symphony.apollo.fullname" .) .Values.apollo.serviceAccount.name }}
 {{- else -}}
 {{ default "default" .Values.apollo.serviceAccount.name }}
+{{- end -}}
+{{- end }}
+
+{{/* Create the name of automation service account to use */}}
+{{- define "symphony.automation.serviceAccountName" -}}
+{{- if .Values.automation.serviceAccount.create -}}
+{{ default (include "symphony.automation.fullname" .) .Values.automation.serviceAccount.name }}
+{{- else -}}
+{{ default "default" .Values.automation.serviceAccount.name }}
 {{- end -}}
 {{- end }}
 
@@ -261,6 +287,11 @@ app.kubernetes.io/component: docs
 {{/* Generate apollo pod labels */}}
 {{- define "symphony.apollo.podLabels" -}}
 {{ include "symphony.apollo.selectorLabels" . }}
+{{- end }}
+
+{{/* Generate automation pod labels */}}
+{{- define "symphony.automation.podLabels" -}}
+{{ include "symphony.automation.selectorLabels" . }}
 {{- end }}
 
 {{/* Create the name for database secret */}}

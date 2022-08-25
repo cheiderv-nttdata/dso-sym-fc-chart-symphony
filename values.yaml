@@ -103,8 +103,8 @@ apollo:
   image:
     pullPolicy: IfNotPresent
     registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
-    repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-repo
-    tag: apollo-v1.0
+    repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
+    tag: apollo-v1.0.19
   nodeSelector: {}
   podDisruptionBudget:
     enabled: true

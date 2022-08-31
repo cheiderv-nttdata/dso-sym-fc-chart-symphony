@@ -67,6 +67,12 @@ app.kubernetes.io/component: automation
 {{ include "symphony.metaLabels" . }}
 {{- end }}
 
+{{/* Meta labels for scheduler service */}}
+{{- define "symphony.scheduler.metaLabels" -}}
+app.kubernetes.io/component: scheduler
+{{ include "symphony.metaLabels" . }}
+{{- end }}
+
 {{/* Meta labels for admin service */}}
 {{- define "symphony.admin.metaLabels" -}}
 app.kubernetes.io/component: admin
@@ -127,6 +133,12 @@ app.kubernetes.io/component: apollo
 app.kubernetes.io/component: automation
 {{- end }}
 
+{{/* Selector labels for scheduler service */}}
+{{- define "symphony.scheduler.selectorLabels" -}}
+{{ include "symphony.selectorLabels" . }}
+app.kubernetes.io/component: scheduler
+{{- end }}
+
 {{/* Selector labels for admin service */}}
 {{- define "symphony.admin.selectorLabels" -}}
 {{ include "symphony.selectorLabels" . }}
@@ -165,6 +177,11 @@ app.kubernetes.io/component: docs
 {{/* Fullname suffixed with automation */}}
 {{- define "symphony.automation.fullname" -}}
 {{- print (include "symphony.fullname" .) "-automation" -}}
+{{- end }}
+
+{{/* Fullname suffixed with scheduler */}}
+{{- define "symphony.scheduler.fullname" -}}
+{{- print (include "symphony.fullname" .) "-scheduler" -}}
 {{- end }}
 
 {{/* Fullname suffixed with front */}}
@@ -226,6 +243,15 @@ app.kubernetes.io/component: docs
 {{ default (include "symphony.automation.fullname" .) .Values.automation.serviceAccount.name }}
 {{- else -}}
 {{ default "default" .Values.automation.serviceAccount.name }}
+{{- end -}}
+{{- end }}
+
+{{/* Create the name of scheduler service account to use */}}
+{{- define "symphony.scheduler.serviceAccountName" -}}
+{{- if .Values.scheduler.serviceAccount.create -}}
+{{ default (include "symphony.scheduler.fullname" .) .Values.scheduler.serviceAccount.name }}
+{{- else -}}
+{{ default "default" .Values.scheduler.serviceAccount.name }}
 {{- end -}}
 {{- end }}
 
@@ -292,6 +318,11 @@ app.kubernetes.io/component: docs
 {{/* Generate automation pod labels */}}
 {{- define "symphony.automation.podLabels" -}}
 {{ include "symphony.automation.selectorLabels" . }}
+{{- end }}
+
+{{/* Generate scheduler pod labels */}}
+{{- define "symphony.scheduler.podLabels" -}}
+{{ include "symphony.scheduler.selectorLabels" . }}
 {{- end }}
 
 {{/* Create the name for database secret */}}

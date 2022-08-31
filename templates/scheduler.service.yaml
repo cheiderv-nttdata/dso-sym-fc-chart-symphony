@@ -1,0 +1,20 @@
+{{- /*
+Copyright (c) 2004-present Facebook All rights reserved.
+Use of this source code is governed by a BSD-style
+license that can be found in the LICENSE file.
+*/ -}}
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "symphony.scheduler.fullname" . }}
+  labels: {{- include "symphony.scheduler.metaLabels" . | nindent 4 }}
+spec:
+  selector: {{- include "symphony.scheduler.selectorLabels" . | nindent 4 }}
+  type: ClusterIP
+  ports:
+    - name: http-internal
+      port: {{ .Values.scheduler.service.internal.port }}
+      targetPort: http-internal
+
+

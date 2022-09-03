@@ -103,7 +103,7 @@ apollo:
     pullPolicy: IfNotPresent
     registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
     repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
-    tag: apollo-v1.0.24
+    tag: apollo-v1.0.25
   nodeSelector: {}
   podDisruptionBudget:
     enabled: true

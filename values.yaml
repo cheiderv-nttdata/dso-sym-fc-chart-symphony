@@ -1,13 +1,11 @@
 USER-SUPPLIED VALUES:
 COMPUTED VALUES: null
 USER-SUPPLIED VALUES: null
-
 # Ingress configuration
 ingress:
   enabled: false
   annotations: {}
   labels: {}
-
   # Hosts to use for ingress rules
   hosts: []
   # - symphony.domain.com
@@ -19,24 +17,28 @@ ingress:
   # Extra paths to prepend to every host
   extraPaths: []
   # - path: /*
+
   #   backend:
+
   #     serviceName: ssl-redirect
+
   #     servicePort: use-annotation
 
   # TLS configuration for symphony ingress
+
   # Secret must be manually created in the namespace
   tls: []
   # - secretName: symphony-general-tls
-  #   hosts:
-  #   - symphony.domain.com
-  
+#   hosts:
+
+#   - symphony.domain.com
 admin:
   affinity: {}
   deploymentAnnotations: {}
   image:
     pullPolicy: IfNotPresent
-    registry: 357464976842.dkr.ecr.us-west-2.amazonaws.com
-    repository: 357464976842.dkr.ecr.us-west-2.amazonaws.com/symphony
+    registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
+    repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
     tag: admin-v1.0.23
   networkPolicy:
     allowExternal: false
@@ -99,9 +101,9 @@ apollo:
     minReplicas: 1
   image:
     pullPolicy: IfNotPresent
-    registry: 357464976842.dkr.ecr.us-west-2.amazonaws.com
-    repository: 357464976842.dkr.ecr.us-west-2.amazonaws.com/symphony
-    tag: apollo-v1.0.21
+    registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
+    repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
+    tag: apollo-v1.0.24
   nodeSelector: {}
   podDisruptionBudget:
     enabled: true
@@ -143,8 +145,8 @@ async:
   deploymentAnnotations: {}
   image:
     pullPolicy: IfNotPresent
-    registry: 357464976842.dkr.ecr.us-west-2.amazonaws.com
-    repository: 357464976842.dkr.ecr.us-west-2.amazonaws.com/symphony
+    registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
+    repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
     tag: async-v1.0.26
   nodeSelector: {}
   podAnnotations: {}
@@ -194,10 +196,10 @@ async:
       bucket_prefix: exports/
       bucket_url: s3://symphony-sandbox-coe-india?region=us-west-2
     extraEnvVars:
-    - name: NATS_SERVER_URL
-      value: nats://nats.nats.svc.cluster.local
-    - name: AUTOMATION_URL
-      value: http://symphony-automation/api/flow/1.0/
+      - name: NATS_SERVER_URL
+        value: nats://nats.nats.svc.cluster.local
+      - name: AUTOMATION_URL
+        value: http://symphony-automation/api/flow/1.0/
     log:
       format: json
       level: debug
@@ -217,8 +219,8 @@ automation:
     minReplicas: 1
   image:
     pullPolicy: IfNotPresent
-    registry: 357464976842.dkr.ecr.us-west-2.amazonaws.com
-    repository: 357464976842.dkr.ecr.us-west-2.amazonaws.com/symphony
+    registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
+    repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
     tag: automation-v1.0.18
   nodeSelector: {}
   podDisruptionBudget:
@@ -253,48 +255,48 @@ automation:
     name: symphony-automation
   spec:
     extraEnvVars:
-    - name: AUTOMATION_ADDRESS
-      value: 0.0.0.0
-    - name: AUTOMATION_PORT
-      value: "80"
-    - name: CADENCE_ADDRESS
-      value: cadence-frontend.cadence.svc.cluster.local
-    - name: CADENCE_PORT
-      value: "7933"
-    - name: DOMAIN_NAME
-      value: automation
-    - name: DOMAIN_WORKFLOW_RETENTION
-      value: "2"
-    - name: DOMAIN_EMIT_METRICS
-      value: "true"
-    - name: WORKER_CLIENT_NAME
-      value: automation-execution-service
-    - name: WORKER_SERVICE_NAME
-      value: cadence-frontend
-    - name: WORKER_TASK_LIST
-      value: automation-execution-task-list
-    - name: GRAPHQL_ENDPOINT
-      value: http://symphony-apollo:4000/query
-    - name: GRAPHQL_USER_ROLE
-      value: USER
-    - name: GRAPHQL_AUTHENTICATION_TYPE
-      value: BASIC
-    - name: GRAPHQL_AUTHENTICATION_BASIC_USER
-      value: symphony@nttdata.com
-    - name: GRAPHQL_AUTHENTICATION_BASIC_PASSWORD
-      value: symphony@nttdata.com
-    - name: GRAPHQL_AUTHENTICATION_OIDC_CLIENT_ID
-      value: ""
-    - name: GRAPHQL_AUTHENTICATION_OIDC_CLIENT_SECRET
-      value: ""
-    - name: GIN_MODE
-      value: release
-    - name: GRAPHQL_AUTHENTICATION_OIDC_URL
-      value: ""
-    - name: LOG_FORMAT
-      value: console
-    - name: LOG_LEVEL
-      value: debug
+      - name: AUTOMATION_ADDRESS
+        value: 0.0.0.0
+      - name: AUTOMATION_PORT
+        value: "80"
+      - name: CADENCE_ADDRESS
+        value: cadence-frontend.cadence.svc.cluster.local
+      - name: CADENCE_PORT
+        value: "7933"
+      - name: DOMAIN_NAME
+        value: automation
+      - name: DOMAIN_WORKFLOW_RETENTION
+        value: "2"
+      - name: DOMAIN_EMIT_METRICS
+        value: "true"
+      - name: WORKER_CLIENT_NAME
+        value: automation-execution-service
+      - name: WORKER_SERVICE_NAME
+        value: cadence-frontend
+      - name: WORKER_TASK_LIST
+        value: automation-execution-task-list
+      - name: GRAPHQL_ENDPOINT
+        value: http://symphony-apollo:4000/query
+      - name: GRAPHQL_USER_ROLE
+        value: USER
+      - name: GRAPHQL_AUTHENTICATION_TYPE
+        value: BASIC
+      - name: GRAPHQL_AUTHENTICATION_BASIC_USER
+        value: symphony@nttdata.com
+      - name: GRAPHQL_AUTHENTICATION_BASIC_PASSWORD
+        value: symphony@nttdata.com
+      - name: GRAPHQL_AUTHENTICATION_OIDC_CLIENT_ID
+        value: ""
+      - name: GRAPHQL_AUTHENTICATION_OIDC_CLIENT_SECRET
+        value: ""
+      - name: GIN_MODE
+        value: release
+      - name: GRAPHQL_AUTHENTICATION_OIDC_URL
+        value: ""
+      - name: LOG_FORMAT
+        value: console
+      - name: LOG_LEVEL
+        value: debug
     log:
       level: info
     proxy:
@@ -304,8 +306,8 @@ docs:
   deploymentAnnotations: {}
   image:
     pullPolicy: IfNotPresent
-    registry: 357464976842.dkr.ecr.us-west-2.amazonaws.com
-    repository: 357464976842.dkr.ecr.us-west-2.amazonaws.com/symphony
+    registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
+    repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
     tag: docs-v1.0
   nodeSelector: {}
   podAnnotations: {}
@@ -353,9 +355,9 @@ front:
   deploymentAnnotations: {}
   image:
     pullPolicy: IfNotPresent
-    registry: 357464976842.dkr.ecr.us-west-2.amazonaws.com
-    repository: 357464976842.dkr.ecr.us-west-2.amazonaws.com/symphony
-    tag: front-v1.0.31
+    registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
+    repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
+    tag: front-v1.0.34
   nodeSelector: {}
   podAnnotations: {}
   podDisruptionBudget:
@@ -398,12 +400,12 @@ front:
     name: symphony-front
   spec:
     extraEnvVars:
-    - name: FB_TEST_USER
-      value: symphony@nttdata.com
-    - name: RECAPTCHA_KEY
-      value: 6LdmeOEfAAAAAAIGFOyM23yMdwyxOhQZ2fVTMQrD
-    - name: APOLLO_HOST
-      value: symphony-apollo:4000
+      - name: FB_TEST_USER
+        value: symphony@nttdata.com
+      - name: RECAPTCHA_KEY
+        value: 6LdmeOEfAAAAAAIGFOyM23yMdwyxOhQZ2fVTMQrD
+      - name: APOLLO_HOST
+        value: symphony-apollo:4000
     log:
       level: info
     mapbox:
@@ -440,9 +442,9 @@ graph:
   deploymentAnnotations: {}
   image:
     pullPolicy: IfNotPresent
-    registry: 357464976842.dkr.ecr.us-west-2.amazonaws.com
-    repository: 357464976842.dkr.ecr.us-west-2.amazonaws.com/symphony
-    tag: graph-v1.0.31
+    registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
+    repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
+    tag: graph-v1.0.32
   nodeSelector: {}
   podAnnotations: {}
   podDisruptionBudget:
@@ -485,8 +487,8 @@ graph:
     event:
       url: nats://graph.event
     extraEnvVars:
-    - name: NATS_SERVER_URL
-      value: nats://nats.nats.svc.cluster.local
+      - name: NATS_SERVER_URL
+        value: nats://nats.nats.svc.cluster.local
     log:
       format: json
       level: debug
@@ -498,14 +500,14 @@ graph:
 jobrunner:
   image:
     pullPolicy: null
-    registry: 357464976842.dkr.ecr.us-west-2.amazonaws.com
-    repository: 357464976842.dkr.ecr.us-west-2.amazonaws.com/symphony
+    registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
+    repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
     tag: jobrunner-v1.0
   jobs:
-  - name: gc
-    schedule: 0 * * * *
-  - name: syncservices
-    schedule: 0 * * * *
+    - name: gc
+      schedule: 0 * * * *
+    - name: syncservices
+      schedule: 0 * * * *
   resources:
     limits:
       cpu: 10m
@@ -517,8 +519,8 @@ jobrunner:
 migrate:
   image:
     pullPolicy: IfNotPresent
-    registry: 357464976842.dkr.ecr.us-west-2.amazonaws.com
-    repository: 357464976842.dkr.ecr.us-west-2.amazonaws.com/symphony
+    registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
+    repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
     tag: migrate-v1.0.23
   securityContext:
     fsGroup: 65534
@@ -534,8 +536,8 @@ migrate:
         address: cadence-frontend.cadence.svc.cluster.local:7933
         domains: flow,export
         extraEnvVars:
-        - name: CADENCE_RETENTION
-          value: "3"
+          - name: CADENCE_RETENTION
+            value: "3"
       graph:
         extraEnvVars: []
 nameOverride: ""
@@ -595,50 +597,50 @@ scheduler:
     name: symphony-scheduler
   spec:
     extraEnvVars:
-    - name: SCHEDULER_ADDRESS
-      value: 0.0.0.0
-    - name: AUTOMATION_PORT
-      value: "80"
-    - name: CADENCE_ADDRESS
-      value: cadence-frontend.cadence.svc.cluster.local
-    - name: CADENCE_PORT
-      value: "7933"
-    - name: DOMAIN_NAME
-      value: scheduler
-    - name: DOMAIN_WORKFLOW_RETENTION
-      value: "2"
-    - name: DOMAIN_EMIT_METRICS
-      value: "true"
-    - name: WORKER_CLIENT_NAME
-      value: scheduler-execution-service
-    - name: WORKER_SERVICE_NAME
-      value: cadence-frontend
-    - name: WORKER_TASK_LIST
-      value: scheduler-execution-task-list
-    - name: GRAPHQL_ENDPOINT
-      value: http://symphony-apollo:4000/query
-    - name: GRAPHQL_USER_ROLE
-      value: USER
-    - name: GRAPHQL_AUTHENTICATION_TYPE
-      value: BASIC
-    - name: GRAPHQL_TENANT
-      value: symphony
-    - name: GRAPHQL_AUTHENTICATION_BASIC_USER
-      value: symphony@nttdata.com
-    - name: GRAPHQL_AUTHENTICATION_BASIC_PASSWORD
-      value: symphony@nttdata.com
-    - name: GRAPHQL_AUTHENTICATION_OIDC_CLIENT_ID
-      value: ""
-    - name: GRAPHQL_AUTHENTICATION_OIDC_CLIENT_SECRET
-      value: ""
-    - name: GIN_MODE
-      value: release
-    - name: GRAPHQL_AUTHENTICATION_OIDC_URL
-      value: ""
-    - name: LOG_FORMAT
-      value: console
-    - name: LOG_LEVEL
-      value: debug
+      - name: SCHEDULER_ADDRESS
+        value: 0.0.0.0
+      - name: AUTOMATION_PORT
+        value: "80"
+      - name: CADENCE_ADDRESS
+        value: cadence-frontend.cadence.svc.cluster.local
+      - name: CADENCE_PORT
+        value: "7933"
+      - name: DOMAIN_NAME
+        value: scheduler
+      - name: DOMAIN_WORKFLOW_RETENTION
+        value: "2"
+      - name: DOMAIN_EMIT_METRICS
+        value: "true"
+      - name: WORKER_CLIENT_NAME
+        value: scheduler-execution-service
+      - name: WORKER_SERVICE_NAME
+        value: cadence-frontend
+      - name: WORKER_TASK_LIST
+        value: scheduler-execution-task-list
+      - name: GRAPHQL_ENDPOINT
+        value: http://symphony-apollo:4000/query
+      - name: GRAPHQL_USER_ROLE
+        value: USER
+      - name: GRAPHQL_AUTHENTICATION_TYPE
+        value: BASIC
+      - name: GRAPHQL_TENANT
+        value: symphony
+      - name: GRAPHQL_AUTHENTICATION_BASIC_USER
+        value: symphony@nttdata.com
+      - name: GRAPHQL_AUTHENTICATION_BASIC_PASSWORD
+        value: symphony@nttdata.com
+      - name: GRAPHQL_AUTHENTICATION_OIDC_CLIENT_ID
+        value: ""
+      - name: GRAPHQL_AUTHENTICATION_OIDC_CLIENT_SECRET
+        value: ""
+      - name: GIN_MODE
+        value: release
+      - name: GRAPHQL_AUTHENTICATION_OIDC_URL
+        value: ""
+      - name: LOG_FORMAT
+        value: console
+      - name: LOG_LEVEL
+        value: debug
     log:
       level: info
     proxy:
@@ -655,8 +657,8 @@ store:
   deploymentAnnotations: {}
   image:
     pullPolicy: IfNotPresent
-    registry: 357464976842.dkr.ecr.us-west-2.amazonaws.com
-    repository: 357464976842.dkr.ecr.us-west-2.amazonaws.com/symphony
+    registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
+    repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
     tag: store-v1.0.22
   nodeSelector: {}
   podAnnotations: {}
@@ -700,12 +702,12 @@ store:
     bucket:
       url: s3://symphony-sandbox-coe-india?region=us-west-2
     extraEnvVars:
-    - name: AWS_ACCESS_KEY_ID
-      value: AKIAVGOUSVXFEBPTVQG7
-    - name: AWS_SECRET_ACCESS_KEY
-      value: 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
-    - name: BUCKET_URL
-      value: s3://store.blobs?region=us-east-2&endpoint=symphony.sandbox.telecomopennetworks.com/symphony-sandbox-coe-india
+      - name: AWS_ACCESS_KEY_ID
+        value: AKIAVGOUSVXFEBPTVQG7
+      - name: AWS_SECRET_ACCESS_KEY
+        value: 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
+      - name: BUCKET_URL
+        value: s3://store.blobs?region=us-east-2&endpoint=symphony.sandbox.telecomopennetworks.com/symphony-sandbox-coe-india
     log:
       format: json
       level: debug

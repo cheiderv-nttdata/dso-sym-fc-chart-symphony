@@ -698,7 +698,7 @@ store:
     name: symphony-store
   spec:
     bucket:
-      url: url: s3://symphony-sandbox-coe-india?region=us-west-2
+      url: s3://symphony-sandbox-coe-india?region=us-west-2
     extraEnvVars:
     - name: AWS_ACCESS_KEY_ID
       value: AKIAVGOUSVXFEBPTVQG7

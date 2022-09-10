@@ -37,8 +37,8 @@ admin:
   deploymentAnnotations: {}
   image:
     pullPolicy: IfNotPresent
-    registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
-    repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
+    registry: 357464976842.dkr.ecr.us-west-2.amazonaws.com
+    repository: 357464976842.dkr.ecr.us-west-2.amazonaws.com/symphony
     tag: admin-v1.0.23
   networkPolicy:
     allowExternal: false
@@ -145,9 +145,9 @@ async:
   deploymentAnnotations: {}
   image:
     pullPolicy: IfNotPresent
-    registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
-    repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
-    tag: async-v1.0.26
+    registry: 357464976842.dkr.ecr.us-west-2.amazonaws.com
+    repository: 357464976842.dkr.ecr.us-west-2.amazonaws.com/symphony
+    tag: async-v1.0.28
   nodeSelector: {}
   podAnnotations: {}
   podDisruptionBudget:
@@ -219,9 +219,9 @@ automation:
     minReplicas: 1
   image:
     pullPolicy: IfNotPresent
-    registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
-    repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
-    tag: automation-v1.0.18
+    registry: 357464976842.dkr.ecr.us-west-2.amazonaws.com
+    repository: 357464976842.dkr.ecr.us-west-2.amazonaws.com/symphony
+    tag: automation-v1.0.19
   nodeSelector: {}
   podDisruptionBudget:
     enabled: true
@@ -306,8 +306,8 @@ docs:
   deploymentAnnotations: {}
   image:
     pullPolicy: IfNotPresent
-    registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
-    repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
+    registry: 357464976842.dkr.ecr.us-west-2.amazonaws.com
+    repository: 357464976842.dkr.ecr.us-west-2.amazonaws.com/symphony
     tag: docs-v1.0
   nodeSelector: {}
   podAnnotations: {}
@@ -355,8 +355,8 @@ front:
   deploymentAnnotations: {}
   image:
     pullPolicy: IfNotPresent
-    registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
-    repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
+    registry: 357464976842.dkr.ecr.us-west-2.amazonaws.com
+    repository: 357464976842.dkr.ecr.us-west-2.amazonaws.com/symphony
     tag: front-v1.0.34
   nodeSelector: {}
   podAnnotations: {}
@@ -442,9 +442,9 @@ graph:
   deploymentAnnotations: {}
   image:
     pullPolicy: IfNotPresent
-    registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
-    repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
-    tag: graph-v1.0.32
+    registry: 357464976842.dkr.ecr.us-west-2.amazonaws.com
+    repository: 357464976842.dkr.ecr.us-west-2.amazonaws.com/symphony
+    tag: graph-v1.0.33
   nodeSelector: {}
   podAnnotations: {}
   podDisruptionBudget:
@@ -500,8 +500,8 @@ graph:
 jobrunner:
   image:
     pullPolicy: null
-    registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
-    repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
+    registry: 357464976842.dkr.ecr.us-west-2.amazonaws.com
+    repository: 357464976842.dkr.ecr.us-west-2.amazonaws.com/symphony
     tag: jobrunner-v1.0
   jobs:
     - name: gc
@@ -519,8 +519,8 @@ jobrunner:
 migrate:
   image:
     pullPolicy: IfNotPresent
-    registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
-    repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
+    registry: 357464976842.dkr.ecr.us-west-2.amazonaws.com
+    repository: 357464976842.dkr.ecr.us-west-2.amazonaws.com/symphony
     tag: migrate-v1.0.23
   securityContext:
     fsGroup: 65534
@@ -563,7 +563,7 @@ scheduler:
     pullPolicy: IfNotPresent
     registry: 357464976842.dkr.ecr.us-west-2.amazonaws.com
     repository: 357464976842.dkr.ecr.us-west-2.amazonaws.com/symphony
-    tag: scheduler-v1.0.6
+    tag: scheduler-v1.0.8
   nodeSelector: {}
   podDisruptionBudget:
     enabled: true
@@ -657,8 +657,8 @@ store:
   deploymentAnnotations: {}
   image:
     pullPolicy: IfNotPresent
-    registry: 837232691946.dkr.ecr.us-east-2.amazonaws.com
-    repository: 837232691946.dkr.ecr.us-east-2.amazonaws.com/symphony-ecr-aws-dev
+    registry: 357464976842.dkr.ecr.us-west-2.amazonaws.com
+    repository: 357464976842.dkr.ecr.us-west-2.amazonaws.com/symphony
     tag: store-v1.0.22
   nodeSelector: {}
   podAnnotations: {}

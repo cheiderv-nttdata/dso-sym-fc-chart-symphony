@@ -103,7 +103,7 @@ apollo:
     pullPolicy: IfNotPresent
     registry: 357464976842.dkr.ecr.us-west-2.amazonaws.com
     repository: 357464976842.dkr.ecr.us-west-2.amazonaws.com/symphony
-    tag: apollo-v1.0.29
+    tag: apollo-v1.0.23
   nodeSelector: {}
   podDisruptionBudget:
     enabled: true
@@ -147,7 +147,7 @@ async:
     pullPolicy: IfNotPresent
     registry: 357464976842.dkr.ecr.us-west-2.amazonaws.com
     repository: 357464976842.dkr.ecr.us-west-2.amazonaws.com/symphony
-    tag: async-v1.0.28
+    tag: async-v1.0.27
   nodeSelector: {}
   podAnnotations: {}
   podDisruptionBudget:
@@ -221,7 +221,7 @@ automation:
     pullPolicy: IfNotPresent
     registry: 357464976842.dkr.ecr.us-west-2.amazonaws.com
     repository: 357464976842.dkr.ecr.us-west-2.amazonaws.com/symphony
-    tag: automation-v1.0.19
+    tag: automation-v1.0.18
   nodeSelector: {}
   podDisruptionBudget:
     enabled: true
@@ -444,7 +444,7 @@ graph:
     pullPolicy: IfNotPresent
     registry: 357464976842.dkr.ecr.us-west-2.amazonaws.com
     repository: 357464976842.dkr.ecr.us-west-2.amazonaws.com/symphony
-    tag: graph-v1.0.33
+    tag: graph-v1.0.32
   nodeSelector: {}
   podAnnotations: {}
   podDisruptionBudget:

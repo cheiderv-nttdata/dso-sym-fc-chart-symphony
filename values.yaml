@@ -502,7 +502,7 @@ jobrunner:
     pullPolicy: null
     registry: 357464976842.dkr.ecr.us-west-2.amazonaws.com
     repository: 357464976842.dkr.ecr.us-west-2.amazonaws.com/symphony
-    tag: jobrunner-v1.0.
+    tag: jobrunner-v1.0.1
   jobs:
     - name: gc
       schedule: 0 * * * *

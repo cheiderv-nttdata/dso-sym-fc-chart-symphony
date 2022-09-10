@@ -499,10 +499,10 @@ graph:
     type: RollingUpdate
 jobrunner:
   image:
-    pullPolicy: IfNotPresent
+    pullPolicy: null
     registry: 357464976842.dkr.ecr.us-west-2.amazonaws.com
     repository: 357464976842.dkr.ecr.us-west-2.amazonaws.com/symphony
-    tag: jobrunner-v1.0.2
+    tag: jobrunner-v1.0
   jobs:
     - name: gc
       schedule: 0 * * * *
@@ -563,7 +563,7 @@ scheduler:
     pullPolicy: IfNotPresent
     registry: 357464976842.dkr.ecr.us-west-2.amazonaws.com
     repository: 357464976842.dkr.ecr.us-west-2.amazonaws.com/symphony
-    tag: scheduler-v1.0.9
+    tag: scheduler-v1.0.8
   nodeSelector: {}
   podDisruptionBudget:
     enabled: true

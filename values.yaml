@@ -563,7 +563,7 @@ scheduler:
     pullPolicy: IfNotPresent
     registry: 357464976842.dkr.ecr.us-west-2.amazonaws.com
     repository: 357464976842.dkr.ecr.us-west-2.amazonaws.com/symphony
-    tag: scheduler-v1.0.8
+    tag: scheduler-v1.0.9
   nodeSelector: {}
   podDisruptionBudget:
     enabled: true

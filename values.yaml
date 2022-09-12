@@ -200,8 +200,8 @@ async:
         value: nats://nats.nats.svc.cluster.local
       - name: AUTOMATION_URL
         value: http://symphony-automation/api/flow/1.0/
-    - name: SCHEDULER_URL
-      value: http://symphony-scheduler/api/scheduler/1.0/
+      - name: SCHEDULER_URL
+        value: http://symphony-scheduler/api/scheduler/1.0/
     log:
       format: json
       level: debug

@@ -446,7 +446,7 @@ graph:
     pullPolicy: IfNotPresent
     registry: 357464976842.dkr.ecr.us-west-2.amazonaws.com
     repository: 357464976842.dkr.ecr.us-west-2.amazonaws.com/symphony
-    tag: graph-v1.0.32
+    tag: graph-v1.0.34
   nodeSelector: {}
   podAnnotations: {}
   podDisruptionBudget:

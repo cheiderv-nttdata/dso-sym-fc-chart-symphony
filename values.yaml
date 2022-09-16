@@ -202,6 +202,22 @@ async:
         value: http://symphony-automation/api/flow/1.0/
       - name: SCHEDULER_URL
         value: http://symphony-scheduler/api/scheduler/1.0/
+      - name: GRAPHQL_ENDPOINT
+        value: http://symphony-apollo:4000/query
+      - name: GRAPHQL_USER_ROLE
+        value: USER
+      - name: GRAPHQL_AUTHENTICATION_TYPE
+        value: BASIC
+      - name: GRAPHQL_AUTHENTICATION_BASIC_USER
+        value: symphony@nttdata.com
+      - name: GRAPHQL_AUTHENTICATION_BASIC_PASSWORD
+        value: symphony@nttdata.com
+      - name: GRAPHQL_AUTHENTICATION_OIDC_CLIENT_ID
+        value: ""
+      - name: GRAPHQL_AUTHENTICATION_OIDC_CLIENT_SECRET
+        value: ""
+      - name: GRAPHQL_AUTHENTICATION_OIDC_URL
+        value: ""
     log:
       format: json
       level: debug

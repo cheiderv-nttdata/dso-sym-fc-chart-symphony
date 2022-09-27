@@ -39,7 +39,7 @@ admin:
     pullPolicy: IfNotPresent
     registry: 357464976842.dkr.ecr.us-west-2.amazonaws.com
     repository: 357464976842.dkr.ecr.us-west-2.amazonaws.com/symphony
-    tag: 	admin-v1.0.25
+    tag: 	admin-v1.0.26
   networkPolicy:
     allowExternal: false
     enabled: true
@@ -103,7 +103,7 @@ apollo:
     pullPolicy: IfNotPresent
     registry: 357464976842.dkr.ecr.us-west-2.amazonaws.com
     repository: 357464976842.dkr.ecr.us-west-2.amazonaws.com/symphony
-    tag: apollo-v1.0.27
+    tag: apollo-v1.0.29
   nodeSelector: {}
   podDisruptionBudget:
     enabled: true
@@ -147,7 +147,7 @@ async:
     pullPolicy: IfNotPresent
     registry: 357464976842.dkr.ecr.us-west-2.amazonaws.com
     repository: 357464976842.dkr.ecr.us-west-2.amazonaws.com/symphony
-    tag: 	async-v1.0.30
+    tag: 	async-v1.0.31
   nodeSelector: {}
   podAnnotations: {}
   podDisruptionBudget:
@@ -239,7 +239,7 @@ automation:
     pullPolicy: IfNotPresent
     registry: 357464976842.dkr.ecr.us-west-2.amazonaws.com
     repository: 357464976842.dkr.ecr.us-west-2.amazonaws.com/symphony
-    tag: 	automation-v1.0.21
+    tag: 	automation-v1.0.23
   nodeSelector: {}
   podDisruptionBudget:
     enabled: true
@@ -375,7 +375,7 @@ front:
     pullPolicy: IfNotPresent
     registry: 357464976842.dkr.ecr.us-west-2.amazonaws.com
     repository: 357464976842.dkr.ecr.us-west-2.amazonaws.com/symphony
-    tag: front-v1.0.37
+    tag: front-v1.0.40
   nodeSelector: {}
   podAnnotations: {}
   podDisruptionBudget:
@@ -462,7 +462,7 @@ graph:
     pullPolicy: IfNotPresent
     registry: 357464976842.dkr.ecr.us-west-2.amazonaws.com
     repository: 357464976842.dkr.ecr.us-west-2.amazonaws.com/symphony
-    tag: graph-v1.0.35
+    tag: graph-v1.0.37
   nodeSelector: {}
   podAnnotations: {}
   podDisruptionBudget:
@@ -539,7 +539,7 @@ migrate:
     pullPolicy: IfNotPresent
     registry: 357464976842.dkr.ecr.us-west-2.amazonaws.com
     repository: 357464976842.dkr.ecr.us-west-2.amazonaws.com/symphony
-    tag: migrate-v1.0.25
+    tag: migrate-v1.0.27
   securityContext:
     fsGroup: 65534
     runAsGroup: 65534
@@ -581,7 +581,7 @@ scheduler:
     pullPolicy: IfNotPresent
     registry: 357464976842.dkr.ecr.us-west-2.amazonaws.com
     repository: 357464976842.dkr.ecr.us-west-2.amazonaws.com/symphony
-    tag: 	scheduler-v1.0.10
+    tag: 	scheduler-v1.0.11
   nodeSelector: {}
   podDisruptionBudget:
     enabled: true
@@ -677,7 +677,7 @@ store:
     pullPolicy: IfNotPresent
     registry: 357464976842.dkr.ecr.us-west-2.amazonaws.com
     repository: 357464976842.dkr.ecr.us-west-2.amazonaws.com/symphony
-    tag: 	store-v1.0.24
+    tag: 	store-v1.0.25
   nodeSelector: {}
   podAnnotations: {}
   podDisruptionBudget:

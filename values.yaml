@@ -239,7 +239,7 @@ automation:
     pullPolicy: IfNotPresent
     registry: 357464976842.dkr.ecr.us-west-2.amazonaws.com
     repository: 357464976842.dkr.ecr.us-west-2.amazonaws.com/symphony
-    tag: 	automation-v1.0.23
+    tag: 	automation-v1.0.24
   nodeSelector: {}
   podDisruptionBudget:
     enabled: true
@@ -375,7 +375,7 @@ front:
     pullPolicy: IfNotPresent
     registry: 357464976842.dkr.ecr.us-west-2.amazonaws.com
     repository: 357464976842.dkr.ecr.us-west-2.amazonaws.com/symphony
-    tag: front-v1.0.42
+    tag: front-v1.0.43
   nodeSelector: {}
   podAnnotations: {}
   podDisruptionBudget:
@@ -462,7 +462,7 @@ graph:
     pullPolicy: IfNotPresent
     registry: 357464976842.dkr.ecr.us-west-2.amazonaws.com
     repository: 357464976842.dkr.ecr.us-west-2.amazonaws.com/symphony
-    tag: graph-v1.0.37
+    tag: graph-v1.0.38
   nodeSelector: {}
   podAnnotations: {}
   podDisruptionBudget:

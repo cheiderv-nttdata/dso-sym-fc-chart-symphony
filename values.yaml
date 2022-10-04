@@ -239,7 +239,7 @@ automation:
     pullPolicy: IfNotPresent
     registry: 357464976842.dkr.ecr.us-west-2.amazonaws.com
     repository: 357464976842.dkr.ecr.us-west-2.amazonaws.com/symphony
-    tag: 	automation-v1.0.24
+    tag: 	automation-v1.0.25
   nodeSelector: {}
   podDisruptionBudget:
     enabled: true

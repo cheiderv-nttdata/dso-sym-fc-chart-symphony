@@ -239,7 +239,7 @@ automation:
     pullPolicy: IfNotPresent
     registry: 357464976842.dkr.ecr.us-west-2.amazonaws.com
     repository: 357464976842.dkr.ecr.us-west-2.amazonaws.com/symphony
-    tag: automation-v1.0.30
+    tag: 	automation-v1.0.31
   nodeSelector: {}
   podDisruptionBudget:
     enabled: true
@@ -375,7 +375,7 @@ front:
     pullPolicy: IfNotPresent
     registry: 357464976842.dkr.ecr.us-west-2.amazonaws.com
     repository: 357464976842.dkr.ecr.us-west-2.amazonaws.com/symphony
-    tag: front-v1.0.45
+    tag: front-v1.0.47
   nodeSelector: {}
   podAnnotations: {}
   podDisruptionBudget:

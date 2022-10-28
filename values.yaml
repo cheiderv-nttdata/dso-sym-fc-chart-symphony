@@ -147,7 +147,7 @@ async:
     pullPolicy: IfNotPresent
     registry: 357464976842.dkr.ecr.us-west-2.amazonaws.com
     repository: 357464976842.dkr.ecr.us-west-2.amazonaws.com/symphony
-    tag: 	async-v1.0.33
+    tag: 	async-v1.0.35
   nodeSelector: {}
   podAnnotations: {}
   podDisruptionBudget:
@@ -375,7 +375,7 @@ front:
     pullPolicy: IfNotPresent
     registry: 357464976842.dkr.ecr.us-west-2.amazonaws.com
     repository: 357464976842.dkr.ecr.us-west-2.amazonaws.com/symphony
-    tag: front-v1.0.53
+    tag: front-v1.0.54
   nodeSelector: {}
   podAnnotations: {}
   podDisruptionBudget:

@@ -375,7 +375,7 @@ front:
     pullPolicy: IfNotPresent
     registry: 357464976842.dkr.ecr.us-west-2.amazonaws.com
     repository: 357464976842.dkr.ecr.us-west-2.amazonaws.com/symphony
-    tag: front-v1.0.57
+    tag: front-v1.0.58
   nodeSelector: {}
   podAnnotations: {}
   podDisruptionBudget:
@@ -462,7 +462,7 @@ graph:
     pullPolicy: IfNotPresent
     registry: 357464976842.dkr.ecr.us-west-2.amazonaws.com
     repository: 357464976842.dkr.ecr.us-west-2.amazonaws.com/symphony
-    tag: graph-v1.0.40
+    tag: graph-v1.0.41
   nodeSelector: {}
   podAnnotations: {}
   podDisruptionBudget:
